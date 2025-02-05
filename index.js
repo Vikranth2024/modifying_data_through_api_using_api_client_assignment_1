@@ -8,11 +8,7 @@ app.use(bodyParser.json());
 
 mongoose
   .connect(
-    'mongodb+srv://Vikranth:TVK@cluster0.hsbtq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
+    "mongodb+srv://Viki713:TVK@cluster0.hmd9m.mongodb.net/E-commerce"
   )
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch((err) => console.error('Error connecting to MongoDB:', err));
