@@ -4,11 +4,8 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const port = 3010;
-
-// Middleware
 app.use(bodyParser.json());
 
-// MongoDB Connection
 mongoose
   .connect(
     'mongodb+srv://Vikranth:TVK@cluster0.hsbtq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
@@ -20,7 +17,6 @@ mongoose
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch((err) => console.error('Error connecting to MongoDB:', err));
 
-// Define Schema & Model
 const menuItemSchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String },
@@ -29,9 +25,6 @@ const menuItemSchema = new mongoose.Schema({
 
 const MenuItem = mongoose.model('MenuItem', menuItemSchema);
 
-// Routes
-
-// Add new menu item
 app.post('/menu', async (req, res) => {
   try {
     const { name, description, price } = req.body;
@@ -48,7 +41,6 @@ app.post('/menu', async (req, res) => {
   }
 });
 
-// Get all menu items
 app.get('/menu', async (req, res) => {
   try {
     const items = await MenuItem.find();
@@ -58,7 +50,6 @@ app.get('/menu', async (req, res) => {
   }
 });
 
-// Start server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
